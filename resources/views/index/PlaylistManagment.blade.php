@@ -11,7 +11,6 @@
             @elseif (isset($tracks))
                 <h1 style="text-align: center;">{{ $tracks->playlistName }}</h1>
             @endif
-
         </div>
     </div>
 </div>
@@ -22,7 +21,7 @@
         @for ($i = 0; $i < count($playlists); $i++)
             @if ($i % 3 == 0) <div class="row"> @endif
                 <div class="col-sm-4">
-                    <a href="{{ route('getPlaylist', [$playlists[$i]->id]) }}">
+                    <a href="{{ route('getTracks', [$playlists[$i]->id]) }}">
                         <img style="width: 100%;" src="{{ $playlists[$i]->images[0]->url }}"/>
                         <h1 style="color: #38c172;">{{ $playlists[$i]->name }}</h1>
                     </a>
@@ -33,7 +32,16 @@
 
     @if (isset($tracks))
         @for ($i = 0; $i < count($tracks->items); $i++)
-            <h1 style="color: #38c172;">{{ $i + 1 . ". " . $tracks->items[$i]->track->name }}</h1>
+            <div class="row">
+                <div style="padding: 0px;" class="col-sm-1">
+                    <a href="{{ route('deleteTrack', [$tracks->playlistId, $tracks->items[$i]->track->id]) }}">
+                        <img style="width: 70%; padding-top: 5px;" src="https://nonamescriptware.com/wp-content/uploads/TrashIt_icon_trnspt.png"/>
+                    </a>
+                </div>
+                <div class="col-sm-9">
+                    <h1 style="color: #38c172;">{{ $i + 1 . ". " . $tracks->items[$i]->track->name }}</h1>
+                </div>
+            </div>
         @endfor
     @endif
 </div>

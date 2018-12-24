@@ -10,4 +10,5 @@
             @include('index.search')
         </div>
     </div>
+    @include('index.play')
 @stop

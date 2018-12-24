@@ -13,11 +13,13 @@ class playlistsController extends Controller
         return redirect()->route('index');
     }
 
-    function getPlaylist($playlistId)
+    function getTracks($playlistId)
     {
         $api = $this->api();
 
-        $playlistName = $api->getPlaylist($playlistId)->name;
+        $playlist = $api->getPlaylist($playlistId);
+
+        $playlistName = $playlist->name;
 
         $tracks = $api->getPlaylistTracks($playlistId);
         $tracks = (array)$tracks;

@@ -11,6 +11,10 @@
 |
 */
 
+// Test
+Route::get('/test', 'playController@playTrack');
+Route::get('/test2', 'playController@test')->name('test');
+Route::get('/ajax', 'ajaxController@test')->name('ajax');
 
 // Login
 Route::get('/login', 'loginController@login')->name('login');
@@ -18,7 +22,7 @@ Route::get('/callback', 'loginController@callback');
 
 
 // Playlists
-Route::get('/playlist/{playlistId}', 'playlistsController@getPlaylist')->name('getPlaylist')->middleware('checkLogin');
+Route::get('/getTracks/{playlistId}', 'playlistsController@getTracks')->name('getTracks')->middleware('checkLogin');
 Route::get('/backToPlaylists', 'playlistsController@backToPlaylists')->name('backToPlaylists')->middleware('checkLogin');
 Route::get('/playlists', 'playlistsController@getplaylists')->name('getPlaylists')->middleware('checkLogin');
 
@@ -28,7 +32,8 @@ Route::get('/search/', 'searchController@getSearch')->name('getSearch')->middlew
 
 
 // Songs
-Route::get('/putSong/{playlistId}/{trackId}', 'songsController@putSong')->name('putSong')->middleware('checkLogin');
+Route::get('/putTrack/{playlistId}/{trackId}', 'songsController@putTrack')->name('putTrack')->middleware('checkLogin');
+Route::get('/deleteTrack/{playlistId}/{trackId}', 'songsController@deleteTrack')->name('deleteTrack')->middleware('checkLogin');
 
 
 // Index

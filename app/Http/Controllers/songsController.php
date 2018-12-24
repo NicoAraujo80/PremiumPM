@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use SpotifyWebAPI;
 use Session;
 
 class songsController extends Controller
 {
-    function putSong($playlistId, $trackId)
+    function putTrack($playlistId, $trackId)
     {
         $api = $this->api();
-
         $api->addPlaylistTracks($playlistId, [$trackId]);
 
-        return redirect()->route('getPlaylist', $playlistId);
+        return redirect()->route('getTracks', $playlistId);
+    }
+
+    function deleteTrack($playlistId, $trackId)
+    {
+        $api = $this->api();
+        $api->deletePlaylistTracks($playlistId, [['id' => $trackId]]);
+
+        return redirect()->route('getTracks', $playlistId);
     }
 
 

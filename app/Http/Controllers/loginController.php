@@ -20,6 +20,7 @@ class loginController extends Controller
                 'user-read-email',
                 'playlist-modify-private',
                 'playlist-modify-public',
+                'user-read-playback-state',
             ],
         ];
 

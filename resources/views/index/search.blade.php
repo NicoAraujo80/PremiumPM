@@ -13,7 +13,7 @@
         @foreach ($search->tracks as $track)
             <div class="row">
                 @if (isset($tracks))
-                    <a class="col-sm-1" style="padding: 0px;" href="{{ route('putSong', [$tracks->playlistId , $track->id]) }}">
+                    <a class="col-sm-1" style="padding: 0px;" href="{{ route('putTrack', [$tracks->playlistId , $track->id]) }}">
                         <img style="float: right; display: block; width: 50%;" src="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_11-512.png"/>
                     </a>
                 @endif
